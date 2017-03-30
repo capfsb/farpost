@@ -10,7 +10,7 @@ View::layoutBegin();
     </p>
     <p>Работает как с включённым, так и с выключенным JS, так что не стесняйтесь его отключать</p>
     <p>Мобилкой считается все, что разрешением меньше 500px</p>
-    <button class="button button_standart js-sample-long-modal">Пример очень длинного модала</button>
+    <button class="button button_standart js-sample-long-modal">Пример очень длинного модала(JS)</button>
     <div>
         <button class="button button_standart js-run-modal-test">Тесты на QUnite</button>
     </div>
