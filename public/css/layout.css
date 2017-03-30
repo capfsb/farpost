@@ -1,0 +1,11 @@
+.layout
+{
+    max-width : 750px;
+    margin    : 0 auto;
+    padding   : 30px 10px;
+}
+
+.typo > *
+{
+    margin-bottom : 20px;
+}

@@ -1,0 +1,6 @@
+.preloader
+{
+    background-image    : url(//www.farpost.ru/resources/img/ajax-bar.gif) !important;
+    background-position : left bottom !important;
+    background-repeat   : repeat-x !important;
+}

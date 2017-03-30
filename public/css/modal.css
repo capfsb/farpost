@@ -1,0 +1,31 @@
+.modal
+{
+    background-color : #fff;
+    padding          : 20px;
+    border-radius    : 3px;
+    box-shadow       : 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.modal_mini
+{
+    width : 300px;
+}
+
+.modal_middle
+{
+    width : 600px;
+}
+
+@media all and (max-width : 650px)
+{
+    .modal_middle
+    {
+        width : 90%;
+        width : calc(100% - 20px);
+    }
+}
+
+.inline-modal
+{
+    position : absolute;
+}

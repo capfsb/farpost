@@ -1,0 +1,11 @@
+.note
+{
+    display       : inline-block;
+    position      : relative;
+    cursor        : pointer;
+    line-height   : 16px;
+    padding       : 5px;
+    border        : 1px solid #EBD096;
+    border-radius : 3px;
+    background    : #FCFADD;
+}

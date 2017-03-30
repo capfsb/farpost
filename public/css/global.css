@@ -1,0 +1,33 @@
+*
+{
+    padding     : 0;
+    margin      : 0;
+    box-sizing  : border-box;
+    outline     : none;
+    font-family : Arial, helvetica, sans-serif;
+}
+
+html, body
+{
+    box-sizing : border-box;
+    width      : 100%;
+    margin     : 0;
+    padding    : 0;
+    min-width  : 320px;
+}
+
+a, a:visited
+{
+    color           : #0052c2;
+    text-decoration : none;
+}
+
+a:hover
+{
+    color : #f36d00;
+}
+
+.no-scroll
+{
+    overflow : hidden;
+}
