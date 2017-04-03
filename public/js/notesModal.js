@@ -109,7 +109,7 @@ var notesModal = {
     _saveResponseAction: function (JSON) {
         var hasText = !!JSON.text;
         this._destroyCurrentModal();
-        this.$currentPageNote.toggle(hasText).html(JSON.text);
+        this.$currentPageNote.toggle(hasText).text(JSON.text);
         this.$allNotesOpeners.text(hasText ? 'Изменить заметку' : 'Добавить заметку');
     }
 };
