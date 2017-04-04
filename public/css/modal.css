@@ -25,7 +25,31 @@
     }
 }
 
-.inline-modal
+
+.inline-modal{
+
+}
+
+.inline-modal_flying
 {
     position : absolute;
 }
+
+.inline-modal_in-content
+{
+    position : static;
+    margin   : 15px 0;
+}
+
+/*
+body > .inline-modal
+{
+    position : absolute;
+    margin   : 0;
+}
+
+.inline-modal
+{
+    margin : 15px 0;
+}
+*/

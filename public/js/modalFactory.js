@@ -13,11 +13,13 @@ var modalFactory = function () {
             offsetFromBottom: false,
             offsetTop: 0,
             offsetLeft: 0,
+            addClass: 'inline-modal_flying'
         },
         create: function (config) {
             config = $.extend($.extend({}, this.defaultConfig), config);
 
             var $modal = $('<div class="inline-modal"></div>');
+            $modal.addClass(config.addClass);
             config.$appendPoint.append($modal);
             var $target      = $(config.target);
             var targetOffset = $target.offset();
@@ -64,15 +66,17 @@ var modalFactory = function () {
             };
         },
         _bindEvents: function (config, $modal, modalAPI) {
-            $(document).on('click', function (e) {
-                //Клик внутри модала
-                var onInlineModalClick = $(e.target).closest('.inline-modal').length;
-                //Клик по элементу к которому он привязан
-                var onModalTargetClick = $(e.target).closest(config.target).length;
-                if (!onInlineModalClick && !onModalTargetClick) {
-                    modalAPI.hide();
-                }
-            });
+            if (config.$appendPoint.is('body')) {
+                $(document).on('click', function (e) {
+                    //Клик внутри модала
+                    var onInlineModalClick = $(e.target).closest('.inline-modal').length;
+                    //Клик по элементу к которому он привязан
+                    var onModalTargetClick = $(e.target).closest(config.target).length;
+                    if (!onInlineModalClick && !onModalTargetClick) {
+                        modalAPI.hide();
+                    }
+                });
+            }
             $modal.on('click', '.js-close-current-modal', function (e) {
                 e.preventDefault();
                 modalAPI.hide();

@@ -9,7 +9,8 @@
 
 var notesModal = {
     modal: false,
-    $currentPageNote: $('.js-current-inline-note'),
+    $currentPageFormNote: $('.js-current-form-note'),
+    $currentPageResponsiveNote: $('.js-current-inline-note'),
     $allNotesOpeners: $('.js-open-note'),
     submitFormSelector: '.js-note-submit',
     previousAjaxModalRequest: false,
@@ -20,11 +21,20 @@ var notesModal = {
     },
 
     _events: function () {
-        this.$currentPageNote.on('click', $.proxy(this, '_openInline'));
+        this.$currentPageFormNote.on('click', $.proxy(this, '_openFormNote'));
+        this.$currentPageResponsiveNote.on('click', $.proxy(this, '_openResponsiveModal'));
         this.$allNotesOpeners.on('click', $.proxy(this, '_openOverlayed'));
         $(document).on('submit', this.submitFormSelector, $.proxy(this, '_submitFormHandler'));
     },
 
+    _openResponsiveModal: function (e) {
+        var isMobile = $(window).width() <= 500;
+        if (isMobile) {
+            this._openOverlayed(e);
+        } else {
+            this._openInline(e)
+        }
+    },
 
     _openOverlayed: function (e) {
         e.preventDefault();
@@ -36,15 +46,28 @@ var notesModal = {
         this._ajaxGetModalContent(e, noteId);
     },
 
-    _openInline: function (e) {
-        //Переопределим поведение для инлайнового модала
-        //Проверяем что это мобильный телефон, это должен быть глобальный объект, например baza.isMobile(), но я не стал выносить
-        var isModile = $(window).width() <= 500;
-        if (isModile) {
-            this._openOverlayed(e);
+
+    _openFormNote: function (e) {
+        e.preventDefault();
+        var $inlineTarget = $(e.currentTarget);
+        if ($inlineTarget.next().length) {
+            this._destroyCurrentModal();
             return;
         }
+        var noteId = this._getNoteId(e);
+        if (!noteId) {
+            return;
+        }
+        this._setCurrentModal(modalFactory.create({
+            target: $inlineTarget,
+            hideAction: 'destroy',
+            $appendPoint: $inlineTarget.parent(),
+            addClass: 'inline-modal_in-content'
+        }));
+        this._ajaxGetModalContent(e, noteId);
+    },
 
+    _openInline: function (e) {
         e.preventDefault();
         var $inlineTarget = $(e.currentTarget);
         var noteId        = this._getNoteId(e);
@@ -109,7 +132,7 @@ var notesModal = {
     _saveResponseAction: function (JSON) {
         var hasText = !!JSON.text;
         this._destroyCurrentModal();
-        this.$currentPageNote.toggle(hasText).text(JSON.text);
+        $('.js-note[data-note-id=' + parseInt(JSON.id) + ']').toggle(hasText).text(JSON.text);
         this.$allNotesOpeners.text(hasText ? 'Изменить заметку' : 'Добавить заметку');
     }
 };

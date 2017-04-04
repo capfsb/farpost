@@ -41,6 +41,7 @@ var unitTests = {
                 offsetFromBottom: false,
                 offsetTop: 0,
                 offsetLeft: 0,
+                addClass: "inline-modal_flying",
             };
 
             var inlineModalInterface = {

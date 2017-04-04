@@ -13,6 +13,7 @@ if ($id) {
     if ($isAjax) {
         header('Content-Type: application/json');
         echo json_encode([
+            'id'   => $id,
             'text' => $text
         ]);
         die();
