@@ -100,7 +100,7 @@ var modalFactory = function () {
             var $overlayContent = $overlay.find('.overlay__content');
 
             $overlayContent.append($modal);
-
+            $modal.addClass('animation animation_pop');
             var modalAPI = this._makeAPI($overlayContent, $modal, $overlay, config);
             this._bindEvents($overlay, modalAPI);
             config.$appendPoint.append($overlay);
@@ -121,16 +121,28 @@ var modalFactory = function () {
                 show: function () {
                     $('body').addClass('no-scroll');
                     $overlay.show();
+                    $modal.addClass('is-play');
                     return this;
                 },
 
-                hide: function () {
+                hideAction: function () {
                     $('body').removeClass('no-scroll');
                     if (config.hideAction == 'destroy') {
                         $overlay.remove();
                     }
                     else {
                         $overlay.hide();
+                    }
+                },
+                hide: function () {
+
+                    $modal.removeClass('is-play');
+                    var isMobile = $(window).width() <= 500;
+                    if (isMobile) {
+                        setTimeout(this.hideAction, 300);
+                    }
+                    else {
+                        this.hideAction();
                     }
                     return this;
                 },

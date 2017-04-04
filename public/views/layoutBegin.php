@@ -13,6 +13,7 @@ ini_set('display_errors', 1);*/
     <!-- Сборщик я не юзал, но на файлы по привычке разбил-->
 
     <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/animation.css">
     <link rel="stylesheet" href="/css/preloader.css">
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/modal.css">

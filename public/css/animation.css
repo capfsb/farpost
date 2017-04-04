@@ -1,0 +1,25 @@
+.animation
+{
+
+}
+
+@media all and (max-width : 500px)
+{
+    .animation_pop
+    {
+        transition-property : transform;
+        transform           : translateY(110%);
+    }
+
+    .animation_pop
+    {
+        transition-duration : .3s;
+    }
+
+    .animation_pop.is-play
+    {
+
+        transform : translateY(0);
+    }
+}
+

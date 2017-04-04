@@ -76,6 +76,7 @@ var unitTests = {
                 show: {},
                 destroy: {},
                 setContent: {},
+                hideAction: {},
             };
 
             var modalAPI = overlayModalFactory.create();
